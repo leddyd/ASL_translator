@@ -1,0 +1,1 @@
+Translator for American sign language using hand detection and image classification to translate signs into letters. Utilizes media pipe, tensorflow, and keras model to do model training and drawing landmarks for hand detection.
