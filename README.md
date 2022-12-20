@@ -13,7 +13,10 @@ Mediapipe
 spellchecker
 ```
 # Dataset
-All photo data is found in customdata. If you want to generate your own image collection you can use photographer and take photos by pressing 'q' within the camera frame.
+All photo data can be produced locally using photographer and take photos by pressing 'q' within the camera frame. There are 28 categories A-Z plus delete and space. You can refer to the link below to reproduce those images basd on their dataset.
+```
+https://www.kaggle.com/datasets/danrasband/asl-alphabet-test 
+```
 
 # Commands
 To run the interface
