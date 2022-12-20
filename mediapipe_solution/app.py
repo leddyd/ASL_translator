@@ -214,14 +214,17 @@ def frame_video_stream(names, threshold, curr_char, prev_char, repeat, word, sen
             print("prediction: ", prediction)
             # only reset repeat count
             # if current character is different from the previous one
-            if curr_char == prev_char:
+            if curr_char == prev_char and curr_char != 'del':
                 repeat +=1
-            else:
+            # only reset if the probiliaty of letter is higher thank threshold
+            # if not then signers will reset the repeat count
+            # with the slightest change
+            elif(float(char_prob) > threshold):
                 repeat = 0
-            
+                
             # if the character is not repeated more than once
             # AND the probability is more threshold
-            if (repeat < 2) and (float(char_prob) > threshold):
+            if (repeat < 1) :
                 #the below print statement is related to the formatter
                 #print(pred)
                 #add character to curent word
@@ -229,9 +232,9 @@ def frame_video_stream(names, threshold, curr_char, prev_char, repeat, word, sen
                 threshold = 0.95
                 if curr_char == 'del':
                     kwargs['ow_box'].delete('1.0', 'end')
-                    kwargs['ow_box'].insert('end', temp[0])
+                    kwargs['ow_box'].insert('end', temp[0].upper())
                 elif curr_char != 'space' :
-                    kwargs['ow_box'].insert('end', curr_char)
+                    kwargs['ow_box'].insert('end', temp[1].upper())
                 
                 if (temp[0] == "") and (temp[1] != "del"):
                     sentence += auto_correct(word) + " "
